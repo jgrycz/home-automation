@@ -12,16 +12,27 @@ tts:
 # hacs:
 #   token: !secret hacs_token
 
+airly:
+    api_key: !secret airly_key
 
 logger:
-   default: warn
-   logs:
-     custom_components.mitemp_bt: info
+    default: warn
+    logs:
+      custom_components.mitemp_bt: info
 
 xiaomi_aqara:
   discovery_retry: 5
   gateways:
     - key: !secret xiaomi_aqara_gateway_key
+
+sonoff:
+  username: sonoff_username
+  password: sonoff_password
+  scan_interval: 60
+  grace_period: 600
+  api_region: 'eu'
+  entity_prefix: True
+  debug: False
 
 device_tracker:
   - platform: huawei_router
@@ -45,37 +56,7 @@ sensor:
     batt_entities: True
     report_unknown: False
 
-# vacuum:
-#   - platform: xiaomi_miio
-#     host: 192.168.100.14
-#     token: "jmmgijwugl1tjftt"
-
-# sensor:
-#   - platform: mitemp_bt
-#     mac: '3F:59:C8:81:C8:42'
-#     name: temperature_humidity_sensor_battery_bedroom
-#     force_update: true
-#     monitored_conditions:
-#       - temperature
-#       - humidity
-#       - battery
-
-# esp32_ble_tracker:
-
-# sensor:
-#   - platform: ble_rssi
-#     mac_address: '3F:59:C8:81:C8:42'
-#     name: "Clock RSSI"   
-  
-#   - platform: xiaomi_lywsd02
-#     mac_address: '3F:59:C8:81:C8:42'
-#     temperature:
-#       name: "Clock temp"
-#     humidity:
-#       name: "Clock humidity"
-
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
-# customize: !include customize.yaml
