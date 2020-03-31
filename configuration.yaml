@@ -26,8 +26,8 @@ xiaomi_aqara:
     - key: !secret xiaomi_aqara_gateway_key
 
 sonoff:
-  username: sonoff_username
-  password: sonoff_password
+  username: !secret sonoff_username
+  password: !secret sonoff_password
   scan_interval: 60
   grace_period: 600
   api_region: 'eu'
