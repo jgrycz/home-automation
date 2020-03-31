@@ -29,7 +29,9 @@ jobs:
     - name: Install system dependencies and set secret.yaml file
       run: |
         mv ci_secrets.yaml secrets.yaml
+        sudo apt-get update
         sudo apt-get install -y libudev-dev
+        sudo apt-get install -y libbluetooth-dev
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
