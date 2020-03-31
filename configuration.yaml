@@ -1,0 +1,81 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+# hacs:
+#   token: !secret hacs_token
+
+
+logger:
+   default: warn
+   logs:
+     custom_components.mitemp_bt: info
+
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - key: !secret xiaomi_aqara_gateway_key
+
+device_tracker:
+  - platform: huawei_router
+    host: 192.168.100.1
+    username: !secret router_username
+    password: !secret router_password
+    consider_home: 60
+  - platform: bluetooth_tracker
+    new_device_defaults:
+      track_new_devices: true
+
+sensor:
+  - platform: mitemp_bt
+    rounding: True
+    decimals: 1
+    period: 60
+    log_spikes: False
+    use_median: False
+    active_scan: False
+    hci_interface: 0
+    batt_entities: True
+    report_unknown: False
+
+# vacuum:
+#   - platform: xiaomi_miio
+#     host: 192.168.100.14
+#     token: "jmmgijwugl1tjftt"
+
+# sensor:
+#   - platform: mitemp_bt
+#     mac: '3F:59:C8:81:C8:42'
+#     name: temperature_humidity_sensor_battery_bedroom
+#     force_update: true
+#     monitored_conditions:
+#       - temperature
+#       - humidity
+#       - battery
+
+# esp32_ble_tracker:
+
+# sensor:
+#   - platform: ble_rssi
+#     mac_address: '3F:59:C8:81:C8:42'
+#     name: "Clock RSSI"   
+  
+#   - platform: xiaomi_lywsd02
+#     mac_address: '3F:59:C8:81:C8:42'
+#     temperature:
+#       name: "Clock temp"
+#     humidity:
+#       name: "Clock humidity"
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+# customize: !include customize.yaml
