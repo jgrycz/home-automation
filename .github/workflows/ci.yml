@@ -41,6 +41,7 @@ jobs:
     - name: Install dependencies
       run: |
         ls -la
+        ls -la custom_components
         python -m pip install --upgrade pip
         pip3 install homeassistant
 
