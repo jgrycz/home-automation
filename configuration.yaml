@@ -49,6 +49,22 @@ sensor:
     hci_interface: 0
     batt_entities: True
     report_unknown: False
+  - platform: impk
+    stops:
+      - id: 17118
+        name: marchewkowa_from_krzyki
+        lines:
+          - "107"
+      - id: 17117
+        name: marchewkowa_to_krzyki
+        lines:
+          - "D"
+          - "107"
+      - id: 16410
+        name: klecina_to_krzyki
+        lines:
+          - "7"
+          - "17"
 
 sonoff:
     username: !secret sonoff_username
@@ -68,20 +84,6 @@ device_tracker:
   - platform: bluetooth_tracker
     new_device_defaults:
       track_new_devices: true
-
-binary_sensor:
-  - platform: impk
-    monitored_conditions:
-      - news
-
-sensor:
-  - platform: impk
-    stops:
-      - id: 120820
-      - id: 124202
-        lines:
-          - "D"
-          - "131"
 
 # device_tracker:
 #   - platform: google_maps
