@@ -20,29 +20,23 @@ logger:
     logs:
       custom_components.mitemp_bt: info
 
+
 xiaomi_aqara:
   discovery_retry: 5
   gateways:
     - key: !secret xiaomi_aqara_gateway_key
 
-sonoff:
-  username: !secret sonoff_username
-  password: !secret sonoff_password
-  scan_interval: 60
-  grace_period: 600
-  api_region: 'eu'
-  entity_prefix: True
-  debug: False
+vacuum:
+  - platform: xiaomi_miio
+    host: !secret xiaomi_vacuum_ip
+    token: !secret xiaomi_vacuum_token
 
-device_tracker:
-  - platform: huawei_router
-    host: 192.168.100.1
-    username: !secret router_username
-    password: !secret router_password
-    consider_home: 60
-  - platform: bluetooth_tracker
-    new_device_defaults:
-      track_new_devices: true
+light:
+  - platform: xiaomi_miio
+    name: Desk lamp
+    host: !secret xiaomi_desk_lamp_ip
+    token: !secret xiaomi_desk_lamp_token
+    model: philips.light.sread1
 
 sensor:
   - platform: mitemp_bt
@@ -55,6 +49,43 @@ sensor:
     hci_interface: 0
     batt_entities: True
     report_unknown: False
+
+sonoff:
+    username: !secret sonoff_username
+    password: !secret sonoff_password
+    scan_interval: 60
+    grace_period: 600
+    api_region: 'eu'
+    entity_prefix: True
+    debug: False
+
+device_tracker:
+  - platform: huawei_router
+    host: !secret router_ip
+    username: !secret router_username
+    password: !secret router_password
+    consider_home: 60
+  - platform: bluetooth_tracker
+    new_device_defaults:
+      track_new_devices: true
+
+binary_sensor:
+  - platform: impk
+    monitored_conditions:
+      - news
+
+sensor:
+  - platform: impk
+    stops:
+      - id: 120820
+      - id: 124202
+        lines:
+          - "D"
+          - "131"
+
+# device_tracker:
+#   - platform: google_maps
+#     username: email
 
 group: !include groups.yaml
 automation: !include automations.yaml

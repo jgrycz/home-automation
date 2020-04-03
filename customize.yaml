@@ -2,3 +2,9 @@ person.jarek:
   icon: mdi:face
 person.korka:
   icon: mdi:face-woman
+switch.sonoff_10006099b7:
+  icon: mdi:lightbulb
+switch.sonoff_100061cff9:
+  icon: mdi:lightbulb
+switch.sonoff_10007f16c0:
+  icon: mdi:lightbulb
