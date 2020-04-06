@@ -3,8 +3,21 @@ person.jarek:
 person.korka:
   icon: mdi:face-woman
 switch.sonoff_10006099b7:
-  icon: mdi:lightbulb
+  friendly_name: Lampa
+  icon: mdi:floor-lamp
 switch.sonoff_100061cff9:
-  icon: mdi:lightbulb
+  friendly_name: Ledy
+  icon: mdi:led-strip
 switch.sonoff_10007f16c0:
+  friendly_name: Światło kuchnia
   icon: mdi:lightbulb
+switch.sonoff_1000909cf5:
+  icon: mdi:power-socket-de
+binary_sensor.window_bedroom:
+  device_class: window
+binary_sensor.window_kitchen:
+  device_class: window
+binary_sensor.door_balcony:
+  device_class: door
+binary_sensor.door_main:
+  device_class: door
