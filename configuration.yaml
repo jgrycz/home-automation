@@ -67,6 +67,16 @@ sensor:
         lines:
           - "7"
           - "17"
+  - platform: waze_travel_time
+    origin: zone.home
+    destination: "51.1091861,17.0369286"
+    name: Do pracy
+    region: 'EU'
+  - platform: waze_travel_time
+    origin: "51.1091861,17.0369286"
+    destination: zone.home
+    name: Z pracy
+    region: 'EU'
 
 sonoff:
     username: !secret sonoff_username
@@ -91,8 +101,6 @@ device_tracker:
   - platform: bluetooth_tracker
     new_device_defaults:
       track_new_devices: true
-#   - platform: google_maps
-#     username: email
 
 group: !include groups.yaml
 automation: !include automations.yaml
