@@ -1,0 +1,8 @@
+{
+  "domain": "sonoff",
+  "name": "Sonoff integration via eWeLink",
+  "documentation": "",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": []
+}
