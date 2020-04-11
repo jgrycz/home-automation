@@ -109,10 +109,10 @@
   condition:
   - condition: or
     conditions:
-      - after: sunset
-        condition: sun
-      - before: sunrise
-        condition: sun
+    - after: sunset
+      condition: sun
+    - before: sunrise
+      condition: sun
   action:
   - data: {}
     entity_id: light.gateway_aqara
@@ -133,11 +133,53 @@
   condition:
   - condition: or
     conditions:
-      - after: sunset
-        condition: sun
-      - before: sunrise
-        condition: sun
+    - after: sunset
+      condition: sun
+    - before: sunrise
+      condition: sun
   action:
   - data: {}
     entity_id: light.gateway_aqara
     service: light.turn_off
+- id: '1586635488797'
+  alias: Scheduled cleaning
+  description: ''
+  trigger:
+  - at: '6:00'
+    platform: time
+  condition: []
+  action:
+  - data: {}
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+    service: vacuum.start
+- id: '1586635940566'
+  alias: Start cleaning using cube
+  description: ''
+  trigger:
+  - event_data:
+      action_type: flip90
+      entity_id: binary_sensor.cube
+    event_type: xiaomi_aqara.cube_action
+    platform: event
+  condition: []
+  action:
+  - data: {}
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+    service: vacuum.start
+- id: '1586636451206'
+  alias: Stop cleaning using cube
+  description: ''
+  trigger:
+  - event_data:
+      action_type: flip180
+      entity_id: binary_sensor.cube
+    event_type: xiaomi_aqara.cube_action
+    platform: event
+  condition: []
+  action:
+  - data: {}
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+    service: vacuum.stop
+  - data: {}
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+    service: vacuum.return_to_base
