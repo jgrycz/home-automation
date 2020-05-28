@@ -12,7 +12,7 @@ switch.sonoff_10007f16c0:
   friendly_name: Światło kuchnia
   icon: mdi:lightbulb
 switch.sonoff_1000909cf5:
-  icon: mdi:power-socket-de
+  icon: mdi:air-purifier
 binary_sensor.window_bedroom:
   device_class: window
 binary_sensor.window_kitchen:
@@ -21,3 +21,24 @@ binary_sensor.door_balcony:
   device_class: door
 binary_sensor.door_main:
   device_class: door
+switch.sonoff_1000b67b4c:
+  friendly_name: Lampa nocna prawa
+  icon: mdi:lamp
+light.desk_lamp:
+  icon: mdi:desk-lamp
+light.desk_lamp_ambient_light:
+  icon: mdi:desk-lamp
+automation.turn_purifier_on_when_windows_are_closed:
+  icon: mdi:air-purifier
+automation.turn_purifier_off_when_window_is_open:
+  icon: mdi:air-purifier
+automation.start_cleaning_from_cube:
+  icon: mdi:robot-vacuum
+automation.start_cleaning:
+  icon: mdi:robot-vacuum
+automation.stop_cleaning_using_cube:
+  icon: mdi:robot-vacuum
+automation.turn_off_gateway_light_when_no_motion_detected:
+  icon: mdi:motion-sensor
+automation.turn_on_gateway_light_when_motion_detected:
+  icon: mdi:motion-sensor

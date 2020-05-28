@@ -8,7 +8,7 @@
     for:
       hours: 0
       minutes: 0
-      seconds: 5
+      seconds: 30
     platform: device
     type: opened
   - device_id: b58fe725fac34b26a4e56dc995f5e1f5
@@ -31,11 +31,11 @@
     type: opened
   condition:
   - condition: state
-    entity_id: switch.socket_purifier
+    entity_id: switch.sonoff_1000909cf5
     state: 'on'
   action:
   - data: {}
-    entity_id: switch.socket_purifier
+    entity_id: switch.sonoff_1000909cf5
     service: switch.turn_off
 - id: '1586381806258'
   alias: Turn purifier on when all windows are closed
@@ -91,11 +91,11 @@
       entity_id: binary_sensor.door_balcony
       type: is_not_open
     - condition: state
-      entity_id: switch.socket_purifier
+      entity_id: switch.sonoff_1000909cf5
       state: 'off'
   action:
   - data: {}
-    entity_id: switch.socket_purifier
+    entity_id: switch.sonoff_1000909cf5
     service: switch.turn_on
 - id: '1586383036124'
   alias: Turn on gateway light when motion detected
