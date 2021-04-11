@@ -1,8 +1,0 @@
-{
-  "domain": "sonoff",
-  "name": "Sonoff integration via eWeLink",
-  "documentation": "",
-  "requirements": ["uuid", "websocket-client==0.54.0"],
-  "dependencies": [],
-  "codeowners": []
-}
