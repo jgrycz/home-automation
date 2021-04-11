@@ -1,0 +1,139 @@
+- id: '1616880723020'
+  alias: Start cleaning
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: bd4621602a67d2a2a6b5bb6ffaf2b8cc
+    type: action
+    subtype: flip90
+    discovery_id: 0x00158d00029ba210 action_flip90
+  condition: []
+  action:
+  - device_id: e505f1e26510e0cd6e5a1fb801a9fda4
+    domain: vacuum
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+    type: clean
+  mode: single
+- id: '1616960946850'
+  alias: Stop cleaning
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: bd4621602a67d2a2a6b5bb6ffaf2b8cc
+    type: action
+    subtype: flip180
+    discovery_id: 0x00158d00029ba210 action_flip180
+  condition: []
+  action:
+  - device_id: e505f1e26510e0cd6e5a1fb801a9fda4
+    domain: vacuum
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+    type: dock
+  mode: single
+- id: '1616961303366'
+  alias: Turn on calorifier
+  description: ''
+  trigger:
+  - platform: time
+    at: 00:00
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 44df259abecc934708c409ede5f3a308
+    entity_id: switch.07724620dc4f229cb7cb_1
+    domain: switch
+  mode: single
+- id: '1616961384795'
+  alias: Turn off calorifier
+  description: ''
+  trigger:
+  - platform: time
+    at: 04:00
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 44df259abecc934708c409ede5f3a308
+    entity_id: switch.07724620dc4f229cb7cb_1
+    domain: switch
+  mode: single
+- id: '1617140729205'
+  alias: Turn purifier on when all windows are closed
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 95bcc5dd99f6a516875eda685079946c
+    entity_id: binary_sensor.0x00158d000309c1c5_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - type: not_opened
+    platform: device
+    device_id: 725b3e5623db36895d8065bfc8803632
+    entity_id: binary_sensor.0x00158d000309940e_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  condition:
+  - condition: and
+    conditions:
+    - type: is_not_open
+      condition: device
+      device_id: 95bcc5dd99f6a516875eda685079946c
+      entity_id: binary_sensor.0x00158d000309c1c5_contact
+      domain: binary_sensor
+    - type: is_not_open
+      condition: device
+      device_id: 725b3e5623db36895d8065bfc8803632
+      entity_id: binary_sensor.0x00158d000309940e_contact
+      domain: binary_sensor
+  action:
+  - type: turn_on
+    device_id: 4ff78cde40dc06b1e882ba300b7bc469
+    entity_id: switch.81353660600194c9e3df
+    domain: switch
+  mode: single
+- id: '1617140878302'
+  alias: Turn purifier off when any window is open
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 95bcc5dd99f6a516875eda685079946c
+    entity_id: binary_sensor.0x00158d000309c1c5_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
+  - type: opened
+    platform: device
+    device_id: 725b3e5623db36895d8065bfc8803632
+    entity_id: binary_sensor.0x00158d000309940e_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
+  condition:
+  - condition: device
+    type: is_on
+    device_id: 4ff78cde40dc06b1e882ba300b7bc469
+    entity_id: switch.81353660600194c9e3df
+    domain: switch
+  action:
+  - type: turn_off
+    device_id: 4ff78cde40dc06b1e882ba300b7bc469
+    entity_id: switch.81353660600194c9e3df
+    domain: switch
+  mode: single

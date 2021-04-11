@@ -1,0 +1,93 @@
+homeassistant:
+  customize: !include customize.yaml
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+logger:
+  default: warn
+  logs:
+    custom_components.mitemp_bt: info
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+sonoff:
+  username: !secret sonoff_username
+  password: !secret sonoff_password
+  mode: local
+  reload: always
+
+device_tracker:
+  - platform: huawei_router
+    host: !secret router_ip
+    username: !secret router_username
+    password: !secret router_password
+    consider_home: 60
+  - platform: bluetooth_tracker
+    new_device_defaults:
+      track_new_devices: true
+
+sensor:
+  - platform: waze_travel_time
+    origin: zone.home
+    destination: "51.1091861,17.0369286"
+    name: "Do pracy"
+    region: "EU"
+  - platform: waze_travel_time
+    origin: "51.1091861,17.0369286"
+    destination: zone.home
+    name: "Z pracy"
+    region: "EU"
+  - platform: mqtt
+    name: "Waga Jarek"
+    state_topic: "miscale/Jarek/weight"
+    value_template: "{{ value_json['weight'] }}"
+    unit_of_measurement: "kg"
+    json_attributes_topic: "miscale/Jarek/weight"
+    icon: mdi:scale-bathroom
+  - platform: mqtt
+    name: "BMI Jarek"
+    state_topic: "miscale/Jarek/weight"
+    value_template: "{{ value_json['bmi'] }}"
+    icon: mdi:human-pregnant
+    unit_of_measurement: "kg/m2"
+  - platform: mqtt
+    name: "Waga Korka"
+    state_topic: "miscale/Korka/weight"
+    value_template: "{{ value_json['weight'] }}"
+    unit_of_measurement: "kg"
+    json_attributes_topic: "miscale/Korka/weight"
+    icon: mdi:scale-bathroom
+  - platform: mqtt
+    name: "BMI Korka"
+    state_topic: "miscale/Korka/weight"
+    value_template: "{{ value_json['bmi'] }}"
+    icon: mdi:human-pregnant
+    unit_of_measurement: "kg/m2"
+  - platform: impk
+    stops:
+      - id: 17118
+        name: marchewkowa_from_krzyki
+        lines:
+          - "107"
+      - id: 17117
+        name: marchewkowa_to_krzyki
+        lines:
+          - "D"
+          - "107"
+      - id: 16410
+        name: klecina_to_krzyki
+        lines:
+          - "7"
+          - "17"
+
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_secret

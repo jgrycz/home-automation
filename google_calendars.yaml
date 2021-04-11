@@ -1,0 +1,37 @@
+- cal_id: pl.polish#holiday@group.v.calendar.google.com
+  entities:
+    - device_id: swieta_w_polsce
+      ignore_availability: true
+      name: "Święta w Polsce"
+      track: true
+      max_results: 10
+
+- cal_id: j20tgmth3f18d7lnihap4p6imk@group.calendar.google.com
+  entities:
+    - device_id: urodziny_i_rocznice
+      ignore_availability: true
+      name: Urodziny i rocznice
+      track: true
+
+- cal_id: jaro9881@gmail.com
+  entities:
+    - device_id: jaro9881_gmail_com
+      ignore_availability: true
+      name: jaro9881@gmail.com
+      track: true
+      max_results: 20
+
+- cal_id: jaroslaw.grycz@gmail.com
+  entities:
+    - device_id: jaroslaw_grycz_gmail_com
+      ignore_availability: true
+      name: jaroslaw.grycz@gmail.com
+      track: true
+      max_results: 20
+
+- cal_id: addressbook#contacts@group.v.calendar.google.com
+  entities:
+    - device_id: urodziny
+      ignore_availability: true
+      name: Contatcts
+      track: false

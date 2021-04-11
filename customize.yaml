@@ -1,0 +1,52 @@
+switch.sonoff_10006099b7:
+  friendly_name: Lampa
+  icon: mdi:floor-lamp
+switch.sonoff_100061cff9:
+  friendly_name: Ledy
+  icon: mdi:led-strip
+switch.sonoff_10007f16c0:
+  friendly_name: Światło kuchnia
+  icon: mdi:lightbulb
+switch.sonoff_1000b67b4c:
+  friendly_name: Lampa nocna prawa
+  icon: mdi:lamp
+binary_sensor.0x00158d0002f924e3_contact:
+  device_class: window
+binary_sensor.0x00158d000309940e_contact:
+  device_class: window
+light.desk_lamp:
+  icon: mdi:desk-lamp
+light.desk_lamp_ambient_light:
+  icon: mdi:desk-lamp
+switch.07724620dc4f229cb7cb_7:
+  icon: mdi:battery-charging
+switch.07724620dc4f229cb7cb_1:
+  icon: mdi:beaker
+switch.83322676500291c53607:
+  icon: mdi:power-socket-eu
+sensor.0x00158d00029ba210_action:
+  icon: mdi:cube
+sensor.0x00158d0002b16079:
+  icon: mdi:washing-machine
+switch.81353660600194c9e3df:
+  icon: mdi:air-purifier
+switch.0x60a423fffe652cf7:
+  icon: mdi:power-socket-eu
+# binary_sensor.door_balcony:
+#   device_class: door
+# binary_sensor.door_main:
+#   device_class: door
+automation.nowa_automatyzacja:
+  icon: mdi:air-purifier
+automation.turn_purifier_on_when_all_windows_are_closed:
+  icon: mdi:air-purifier
+automation.start_cleaning:
+  icon: mdi:cube
+automation.stop_cleaning:
+  icon: mdi:cube-off
+# automation.start_cleaning_from_cube:
+#   icon: mdi:robot-vacuum
+# automation.turn_off_gateway_light_when_no_motion_detected:
+#   icon: mdi:motion-sensor
+# automation.turn_on_gateway_light_when_motion_detected:
+#   icon: mdi:motion-sensor
