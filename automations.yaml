@@ -137,3 +137,19 @@
     entity_id: switch.81353660600194c9e3df
     domain: switch
   mode: single
+- id: '1618840849620'
+  alias: Notify Wash Cycle Completed
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.washing_maching_is_running
+    from: 'true'
+    to: 'false'
+    for: '1'
+  condition: []
+  action:
+  - service: notify.notify
+    data:
+      message: Pranie skończone!
+      title: Pralka
+  mode: single

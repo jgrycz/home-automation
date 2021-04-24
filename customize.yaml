@@ -26,11 +26,13 @@ switch.83322676500291c53607:
   icon: mdi:power-socket-eu
 sensor.0x00158d00029ba210_action:
   icon: mdi:cube
-sensor.0x00158d0002b16079:
-  icon: mdi:washing-machine
+# sensor.0x00158d0002b16079:
+#   icon: mdi:washing-machine
 switch.81353660600194c9e3df:
   icon: mdi:air-purifier
 switch.0x60a423fffe652cf7:
+  icon: mdi:power-socket-eu
+switch.0x60a423fffe70bd37:
   icon: mdi:power-socket-eu
 # binary_sensor.door_balcony:
 #   device_class: door

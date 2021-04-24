@@ -37,11 +37,11 @@ device_tracker:
 sensor:
   - platform: waze_travel_time
     origin: zone.home
-    destination: "51.1091861,17.0369286"
+    destination: !secret work_coords
     name: "Do pracy"
     region: "EU"
   - platform: waze_travel_time
-    origin: "51.1091861,17.0369286"
+    origin: !secret work_coords
     destination: zone.home
     name: "Z pracy"
     region: "EU"
@@ -87,7 +87,37 @@ sensor:
         lines:
           - "7"
           - "17"
+  - platform: template
+    sensors:
+      washing_maching_is_running:
+        friendly_name: Pralka
+        value_template: >-
+          {% if states('sensor.0x60a423fffe70bd37_power')|float > 1 %}
+            on
+          {% else %}
+            off
+          {% endif %}
+        icon_template: >-
+          {% if states('sensor.0x60a423fffe70bd37_power')|float > 1 %}
+            mdi:washing-machine
+          {% else %}
+            mdi:washing-machine-off
+          {%- endif %}
 
 google:
   client_id: !secret google_client_id
   client_secret: !secret google_client_secret
+
+http:
+  base_url: !secret http_base_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: !secret influxdb_database
+  username: !secret influxdb_username
+  password: !secret influxdb_password
+  max_retries: 3
+  default_measurement: state
