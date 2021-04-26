@@ -4,6 +4,9 @@ homeassistant:
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+mobile_app:
+discovery:
+
 logger:
   default: warn
   logs:
@@ -89,7 +92,7 @@ sensor:
           - "17"
   - platform: template
     sensors:
-      washing_maching_is_running:
+      washing_machine_is_running:
         friendly_name: Pralka
         value_template: >-
           {% if states('sensor.0x60a423fffe70bd37_power')|float > 1 %}
@@ -102,6 +105,20 @@ sensor:
             mdi:washing-machine
           {% else %}
             mdi:washing-machine-off
+          {%- endif %}
+      dishwasher_is_running:
+        friendly_name: Zmywarka
+        value_template: >-
+          {% if states('sensor.0x60a423fffeaeaec8_power')|float > 1 %}
+            on
+          {% else %}
+            off
+          {% endif %}
+        icon_template: >-
+          {% if states('sensor.0x60a423fffeaeaec8_power')|float > 1 %}
+            mdi:dishwasher
+          {% else %}
+            mdi:dishwasher-off
           {%- endif %}
 
 google:
@@ -121,3 +138,10 @@ influxdb:
   password: !secret influxdb_password
   max_retries: 3
   default_measurement: state
+
+notify_events:
+  token: !secret notify_events_token
+
+notify:
+  - name: events
+    platform: notify_events

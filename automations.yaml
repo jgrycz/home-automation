@@ -143,13 +143,42 @@
   trigger:
   - platform: state
     entity_id: sensor.washing_maching_is_running
-    from: 'true'
-    to: 'false'
+    from: 'on'
+    to: 'off'
     for: '1'
   condition: []
   action:
-  - service: notify.notify
+  - service: notify.events
     data:
-      message: Pranie skończone!
-      title: Pralka
+      message: Koniec prania!
+  mode: single
+- id: '1619386518268'
+  alias: Notify when cleaning started
+  description: ''
+  trigger:
+  - platform: device
+    device_id: e505f1e26510e0cd6e5a1fb801a9fda4
+    domain: vacuum
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+    type: cleaning
+  condition: []
+  action:
+  - service: notify.events
+    data:
+      message: Sprzątam!
+  mode: single
+- id: '1619386725875'
+  alias: ' Notify when cleaning finished'
+  description: ''
+  trigger:
+  - platform: device
+    device_id: e505f1e26510e0cd6e5a1fb801a9fda4
+    domain: vacuum
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+    type: cleaning
+  condition: []
+  action:
+  - service: notify.events
+    data:
+      message: Koniec sprzątania!
   mode: single
